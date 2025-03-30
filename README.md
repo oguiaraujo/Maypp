@@ -34,7 +34,7 @@ Maypp é um aplicativo desenvolvido em Dart Flutter como parte da disciplina de 
 Cada "Receita" adiciona um novo recurso ao Maypp, implementando conceitos de POO.  
 📌 **Lista de Receitas desenvolvidas até o momento:**
 - [x] **Receita 1**: Construindo Interfaces com o Usuário  
-- [ ] **Receita 2**: Classes e herança no contexto de interfaces gráficas  
+- [x] **Receita 2**: Classes e herança no contexto de interfaces gráficas  
 - [ ] **Receita 3**: Herança à moda moderna: funções de alta ordem  
 - [ ] **Receita 4**: Objetos JSON  
 - [ ] **Receita 5**: Gerência de estados #1 - o básico do básico  
