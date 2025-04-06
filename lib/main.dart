@@ -6,52 +6,76 @@ class Maypp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(brightness: Brightness.dark,  fontFamily: 'Ubuntu'),
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Ubuntu'),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: MayppBar(),
-        body: MayppBody(),
-        bottomNavigationBar: MayppBottonNavBar(),
+        body: MayppBody(
+          objects: ["Texto testando 1", "Texto testando 2", "Texto testando 3"]
+        ),
+        bottomNavigationBar: MayppBottonNavBar(objIcons: [Icons.light_mode, Icons.dark_mode],),
       ),
     );
   }
 }
 
 class MayppBar extends AppBar {
-  MayppBar() : super(title: Text("Maypp"));
+  MayppBar() : super(
+    title: Text("Maypp"),
+    actions: [
+      PopupMenuButton(
+        icon: Icon(Icons.color_lens),
+        color: Colors.black,
+        itemBuilder: (BuildContext context) => <PopupMenuEntry> [
+          PopupMenuItem(
+            child: Container(
+              alignment: Alignment.center,
+              child: Icon(Icons.circle, color: Colors.white)
+            )
+          ),
+          PopupMenuItem(
+            child: Container(
+              alignment: Alignment.center,
+              child: Icon(Icons.circle, color: Colors.yellow)
+            )
+          ),
+          PopupMenuItem(
+            child: Container(
+              alignment: Alignment.center,
+              child: Icon(Icons.circle, color: Colors.blue)
+            )
+          )
+        ]
+      )
+    ]
+    );
 }
 
 class MayppBody extends StatelessWidget {
-  MayppBody();
+  List<String> objects;
+  MayppBody({this.objects = const []});
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        ExpansionTile(
-          title: Text('Título 1'),
-          subtitle: Text('Opcional'),
-          leading: Icon(Icons.add),
-          children: [
-            ListTile(title: Text('Texto 1')),
-            ListTile(title: Text('Texto 2')),
-          ],
-        ),
-        ExpansionTile(
-          title: Text('Título 2'),
-          subtitle: Text('Opcional'),
-          leading: Icon(Icons.add_circle),
-          children: [
-            ListTile(title: Text('Texto 3')),
-            ListTile(title: Text('Texto 4')),
-          ],
-        ),
-      ],
+      children:
+          objects
+              .map(
+                (obj) => ExpansionTile(
+                  title: Text(obj),
+                  subtitle: Text('Sub'),
+                  leading: Icon(Icons.add),
+                  children: [ListTile(title: Text('secret text'))],
+                ),
+              )
+              .toList(),
     );
   }
 }
 
 class MayppBottonNavBar extends StatelessWidget {
-  MayppBottonNavBar();
+  List<IconData> objIcons;
+  MayppBottonNavBar({this.objIcons = const <IconData>[]});
 
   void buttonTouched(int index) {
     print("Button Touched");
@@ -59,13 +83,14 @@ class MayppBottonNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<IconData> iconlist = [Icons.dark_mode, Icons.favorite, Icons.search, Icons.light_mode];
     return BottomNavigationBar(
       onTap: buttonTouched,
       items:
-          iconlist
-              .map(
-                (icon) => BottomNavigationBarItem(icon: Icon(icon, color: Colors.white), label: ''),
+          objIcons.map(
+                (icon) => BottomNavigationBarItem(
+                  icon: Icon(icon, color: Colors.white),
+                  label: '',
+                ),
               )
               .toList(),
     );
