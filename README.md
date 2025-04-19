@@ -37,7 +37,7 @@ Cada "Receita" adiciona um novo recurso ao Maypp, implementando conceitos de POO
 - [x] **Receita 2**: Classes e herança no contexto de interfaces gráficas  
 - [x] **Receita 3**: Herança à moda moderna: funções de alta ordem  
 - [x] **Receita 4**: Objetos JSON  
-- [ ] **Receita 5**: Gerência de estados #1 - o básico do básico  
+- [x] **Receita 5**: Gerência de estados #1 - o básico do básico  
 - [ ] **Receita 6**: Gerência de estados #2 - 1 real e 99 a mais do básico  
 - [ ] **Receita 7**: Programação Assíncrona, o básico  
 - [ ] **Receita 8**: Programação Assíncrona, uma outra abordagem  
