@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Maypp extends StatelessWidget {
-  Maypp();
-
+class Recipe02 extends StatelessWidget {
+  const Recipe02({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(brightness: Brightness.dark,  fontFamily: 'Ubuntu'),
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Ubuntu'),
       home: Scaffold(
         appBar: MayppBar(),
         body: MayppBody(),
@@ -59,20 +59,23 @@ class MayppBottonNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<IconData> iconlist = [Icons.dark_mode, Icons.favorite, Icons.search, Icons.light_mode];
+    List<IconData> iconlist = [
+      Icons.dark_mode,
+      Icons.favorite,
+      Icons.search,
+      Icons.light_mode,
+    ];
     return BottomNavigationBar(
       onTap: buttonTouched,
       items:
           iconlist
               .map(
-                (icon) => BottomNavigationBarItem(icon: Icon(icon, color: Colors.white), label: ''),
+                (icon) => BottomNavigationBarItem(
+                  icon: Icon(icon, color: Colors.white),
+                  label: '',
+                ),
               )
               .toList(),
     );
   }
-}
-
-void main() {
-  Maypp app = Maypp();
-  runApp(app);
 }

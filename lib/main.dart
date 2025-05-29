@@ -1,186 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'Recipes/recipe1.dart';
+import 'Recipes/recipe2.dart';
+import 'Recipes/recipe3.dart';
+import 'Recipes/recipe4.dart';
+import 'Recipes/recipe5.dart';
 
-var dataObjects = [
-  {"Text": "Exemple 1", "Sub": "Sub Example 1", "Secret": "Secret Exemple 1"},
-  {"Text": "Exemple 2", "Sub": "Sub Example 2", "Secret": "Secret Exemple 2"},
-  {"Text": "Exemple 3", "Sub": "Sub Example 3", "Secret": "Secret Exemple 3"},
-  {"Text": "Exemple 4", "Sub": "Sub Example 4", "Secret": "Secret Exemple 4"},
-  {"Text": "Exemple 5", "Sub": "Sub Example 5", "Secret": "Secret Exemple 5"},
-  {"Text": "Exemple 6", "Sub": "Sub Example 6", "Secret": "Secret Exemple 6"},
-  {"Text": "Exemple 7", "Sub": "Sub Example 7", "Secret": "Secret Exemple 7"},
-  {"Text": "Exemple 8", "Sub": "Sub Example 8", "Secret": "Secret Exemple 8"},
-  {"Text": "Exemple 9", "Sub": "Sub Example 9", "Secret": "Secret Exemple 9"},
-  {
-    "Text": "Exemple 10",
-    "Sub": "Sub Example 10",
-    "Secret": "Secret Exemple 10",
-  },
-  {
-    "Text": "Exemple 10",
-    "Sub": "Sub Example 10",
-    "Secret": "Secret Exemple 10",
-  },
-  {
-    "Text": "Exemple 11",
-    "Sub": "Sub Example 11",
-    "Secret": "Secret Exemple 11",
-  },
-  {
-    "Text": "Exemple 12",
-    "Sub": "Sub Example 12",
-    "Secret": "Secret Exemple 12",
-  },
-  {
-    "Text": "Exemple 13",
-    "Sub": "Sub Example 13",
-    "Secret": "Secret Exemple 13",
-  },
-  {
-    "Text": "Exemple 14",
-    "Sub": "Sub Example 14",
-    "Secret": "Secret Exemple 14",
-  },
-  {
-    "Text": "Exemple 15",
-    "Sub": "Sub Example 15",
-    "Secret": "Secret Exemple 15",
-  },
-  {
-    "Text": "Exemple 16",
-    "Sub": "Sub Example 16",
-    "Secret": "Secret Exemple 16",
-  },
-  {
-    "Text": "Exemple 17",
-    "Sub": "Sub Example 17",
-    "Secret": "Secret Exemple 17",
-  },
-  {
-    "Text": "Exemple 18",
-    "Sub": "Sub Example 18",
-    "Secret": "Secret Exemple 18",
-  },
-  {
-    "Text": "Exemple 19",
-    "Sub": "Sub Example 19",
-    "Secret": "Secret Exemple 19",
-  },
-  {
-    "Text": "Exemple 20",
-    "Sub": "Sub Example 20",
-    "Secret": "Secret Exemple 20",
-  },
-];
+void main() {
+  runApp(const RecipeApp());
+}
 
-class Maypp extends StatelessWidget {
-  Maypp();
+class RecipeApp extends StatelessWidget {
+  const RecipeApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        fontFamily: 'Ubuntu'),
+      title: 'RecipeScreen',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: MayppBar(),
-        body: MayppBody(objects: dataObjects),
-        bottomNavigationBar: MayppBottonNavBar(
-          objIcons: [Icons.light_mode, Icons.favorite, Icons.dark_mode],
-        ),
+      home: const RecipeMenu(),
+    );
+  }
+}
+
+class RecipeMenu extends StatelessWidget {
+  const RecipeMenu({Key? key}) : super(key: key);
+
+  static final List<Map<String, dynamic>> _recipeList = [
+    {'index': 1, 'name': 'Recipe 01'},
+    {'index': 2, 'name': 'Recipe 02'},
+    {'index': 3, 'name': 'Recipe 03'},
+    {'index': 4, 'name': 'Recipe 04'},
+    {'index': 5, 'name': 'Recipe 05'},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Maypp - Choose a Recipe', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.indigo,
+      ),
+      body: ListView.builder(
+        itemCount: _recipeList.length,
+        itemBuilder: (BuildContext context, int listIndex) {
+          final recipeData = _recipeList[listIndex];
+          final int recipePageIndex = recipeData['index'];
+          final String recipeDisplayName = recipeData['name'];
+          
+          return ListTile(
+            title: Text(recipeDisplayName),
+            trailing: const Icon(Icons.arrow_forward_ios, color: Colors.indigo),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => _getRecipePage(recipePageIndex),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
-}
 
-class MayppBar extends AppBar {
-  MayppBar()
-    : super(
-        title: Text("Maypp"),
-        actions: [
-          PopupMenuButton(
-            icon: Icon(Icons.color_lens),
-            color: Colors.black,
-            itemBuilder:
-                (BuildContext context) => <PopupMenuEntry>[
-                  PopupMenuItem(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Icon(Icons.circle, color: Colors.red),
-                    ),
-                  ),
-                  PopupMenuItem(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Icon(Icons.circle, color: Colors.blue),
-                    ),
-                  ),
-                  PopupMenuItem(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Icon(Icons.circle, color: Colors.yellow),
-                    ),
-                  ),
-                ],
-          ),
-        ],
-      );
-}
-
-class MayppBody extends StatelessWidget {
-  List objects;
-  MayppBody({this.objects = const []});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children:
-          objects
-              .map(
-                (obj) => ExpansionTile(
-                  title: Text(obj["Text"]),
-                  subtitle: Text(obj["Sub"]),
-                  leading: Icon(Icons.add),
-                  children: [ListTile(title: Text(obj["Secret"]))],
-                ),
-              )
-              .toList(),
-    );
+  Widget _getRecipePage(int index) {
+    switch (index) {
+      case 1:
+        return const Recipe01();
+      case 2:
+        return const Recipe02();
+      case 3:
+        return const Recipe03();
+      case 4:
+        return const Recipe04();
+      case 5:
+        return const Recipe05();
+      default:
+        return Scaffold(
+          appBar: AppBar(title: const Text("Erro")),
+          body: const Center(child: Text("Receita não encontrada!")),
+        );
+    }
   }
-}
-
-class MayppBottonNavBar extends HookWidget {
-  List<IconData> objIcons;
-  MayppBottonNavBar({this.objIcons = const <IconData>[]});
-
-  void buttonTouched(int index) {
-    print("Button Touched");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var state = useState(1);
-    return BottomNavigationBar(
-      onTap: (index) {
-        print('Índice tocado: $index');
-        state.value = index;
-      },
-      currentIndex: state.value,
-      items:
-          objIcons
-              .map(
-                (icon) => BottomNavigationBarItem(
-                  icon: Icon(icon),
-                  label: '',
-                ),
-              )
-              .toList(),
-    );
-  }
-}
-
-void main() {
-  Maypp app = Maypp();
-  runApp(app);
 }

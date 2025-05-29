@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Maypp extends StatelessWidget {
-  Maypp();
+class Recipe03 extends StatelessWidget {
+  const Recipe03({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +95,4 @@ class MayppBottonNavBar extends StatelessWidget {
               .toList(),
     );
   }
-}
-
-void main() {
-  Maypp app = Maypp();
-  runApp(app);
 }

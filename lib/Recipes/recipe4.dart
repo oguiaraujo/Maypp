@@ -107,9 +107,9 @@ var dataObjects = [{
   }
 ];
 
-class Maypp extends StatelessWidget {
-  Maypp();
-
+class Recipe04 extends StatelessWidget {
+  const Recipe04({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -202,9 +202,4 @@ class MayppBottonNavBar extends StatelessWidget {
               .toList(),
     );
   }
-}
-
-void main() {
-  Maypp app = Maypp();
-  runApp(app);
 }
