@@ -52,7 +52,7 @@ class MayppBar extends AppBar {
 }
 
 class MayppBody extends StatelessWidget {
-  List<String> objects;
+  final List<String> objects;
   MayppBody({this.objects = const []});
 
   @override
@@ -74,7 +74,7 @@ class MayppBody extends StatelessWidget {
 }
 
 class MayppBottonNavBar extends StatelessWidget {
-  List<IconData> objIcons;
+  final List<IconData> objIcons;
   MayppBottonNavBar({this.objIcons = const <IconData>[]});
 
   void buttonTouched(int index) {
