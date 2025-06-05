@@ -45,7 +45,7 @@ class Recipe07 extends StatelessWidget {
       debugShowCheckedModeBanner:false,
       home: Scaffold(
         appBar: AppBar( 
-          title: const Text("Dicas"),
+          title: const Text("Maypp"),
           ),
         body: ValueListenableBuilder(
           valueListenable: dataService.tableStateNotifier,
