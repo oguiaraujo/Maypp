@@ -40,7 +40,7 @@ Cada "Receita" adiciona um novo recurso ao Maypp, implementando conceitos de POO
 - [x] **Receita 5**: Gerência de estados #1 - o básico do básico  
 - [x] **Receita 6**: Gerência de estados #2 - 1 real e 99 a mais do básico  
 - [x] **Receita 7**: Programação Assíncrona, o básico  
-- [ ] **Receita 8**: Programação Assíncrona, uma outra abordagem  
+- [x] **Receita 8**: Programação Assíncrona, uma outra abordagem  
   - [ ] **8a**: Infinite Scrolling  
 - [ ] **Mini-Projeto**: Montagem de novo app usando uma API diferente  
 - [ ] **Receita 9**: Bibliotecas, visibilidade de atributos, métodos get/set, constantes...  

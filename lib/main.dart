@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:maypp/Recipes/recipe8.dart';
 import 'Recipes/recipe1.dart';
 import 'Recipes/recipe2.dart';
 import 'Recipes/recipe3.dart';
 import 'Recipes/recipe4.dart';
 import 'Recipes/recipe5.dart';
 import 'Recipes/recipe6.dart';
+import 'Recipes/recipe7.dart';
 import 'Recipes/recipe7.dart';
 
 void main() {
@@ -35,6 +37,7 @@ class RecipeMenu extends StatelessWidget {
     {'index': 5, 'name': 'Recipe 05'},
     {'index': 6, 'name': 'Recipe 06'},
     {'index': 7, 'name': 'Recipe 07'},
+    {'index': 8, 'name': 'Recipe 08'},
   ];
 
   @override
@@ -84,6 +87,8 @@ class RecipeMenu extends StatelessWidget {
         return const Recipe06();
       case 7:
         return const Recipe07();
+      case 8:
+        return const Recipe08();
       default:
         return Scaffold(
           appBar: AppBar(title: const Text("Erro")),
