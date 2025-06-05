@@ -5,6 +5,7 @@ import 'Recipes/recipe3.dart';
 import 'Recipes/recipe4.dart';
 import 'Recipes/recipe5.dart';
 import 'Recipes/recipe6.dart';
+import 'Recipes/recipe7.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -33,6 +34,7 @@ class RecipeMenu extends StatelessWidget {
     {'index': 4, 'name': 'Recipe 04'},
     {'index': 5, 'name': 'Recipe 05'},
     {'index': 6, 'name': 'Recipe 06'},
+    {'index': 7, 'name': 'Recipe 07'},
   ];
 
   @override
@@ -79,6 +81,8 @@ class RecipeMenu extends StatelessWidget {
       case 5:
         return const Recipe05();
       case 6:
+        return const Recipe06();
+      case 7:
         return const Recipe06();
       default:
         return Scaffold(
