@@ -83,7 +83,7 @@ class RecipeMenu extends StatelessWidget {
       case 6:
         return const Recipe06();
       case 7:
-        return const Recipe06();
+        return const Recipe07();
       default:
         return Scaffold(
           appBar: AppBar(title: const Text("Erro")),
