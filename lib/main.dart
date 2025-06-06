@@ -7,7 +7,7 @@ import 'Recipes/recipe4.dart';
 import 'Recipes/recipe5.dart';
 import 'Recipes/recipe6.dart';
 import 'Recipes/recipe7.dart';
-import 'Recipes/recipe7.dart';
+import 'Recipes/recipe8.dart';
 
 void main() {
   runApp(const RecipeApp());
